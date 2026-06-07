@@ -1,0 +1,63 @@
+<style>
+    .clock-container {
+        text-align: right;
+        padding: 3px 5px;
+        border: 3px solid #fff;
+        border-radius: 15px;
+        background: #111;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    
+    .clock {
+        font-size: px;
+        color: #00cdf6;
+        letter-spacing: 1px;
+        text-shadow: 0 0 10px rgba(2, 182, 253, 0.59);
+    }
+    
+    .date {
+        margin-top: 1px;
+        font-size: 10px;
+        color: #00c3ff;
+        letter-spacing: 3px;
+    }
+    
+    @media(max-width:768px) {
+        .container {
+            grid-template-columns: 1fr;
+        }
+        .sidebar {
+            width: 100%;
+        }
+        .cards {
+            grid-template-columns: 1fr;
+        }
+        .header {
+            font-size: 22px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="clock-container">
+        <div class="clock" id="clock" style="padding 10px 10px: color:red;font: size 100px;">00:00:00</div>
+        <div class="date" id="date">Loading...</div>
+    </div>
+
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            const time = now.toLocaleTimeString();
+            const date = now.toDateString();
+
+            document.getElementById("clock").textContent = time;
+            document.getElementById("date").textContent = date;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>

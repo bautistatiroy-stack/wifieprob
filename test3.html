@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7fb;
+            color: #333;
+            line-height: 1.6;
+        }
+        /* HEADER */
+        
+        header {
+            background: linear-gradient(135deg, #0077ff, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 10px 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        header h1 {
+            font-size: 40px;
+        }
+        
+        header p {
+            margin-top: 5px;
+            font-size: 13px;
+        }
+        /* NAVIGATION */
+        
+        nav {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1px;
+            padding: 5px;
+            background: linear-gradient(135deg, #1a293ba1, #086782);
+            top: 22px;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            padding: 5px 5px;
+            border-radius: 30px;
+            transition: 0.3s;
+            background: linear-gradient(135deg, #294e78a1, #00c6ff);
+        }
+        
+        nav a:hover {
+            background: #0077ff;
+            color: white;
+        }
+        /* SECTIONS */
+        
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #0077ff;
+        }
+        /* ABOUT */
+        
+        .about {
+            background: white;
+        }
+        /* SKILLS */
+        
+        .skills {
+            background: #eef5ff;
+        }
+        
+        .skill-box {
+            display: inline-block;
+            background: white;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        
+        .skill-box:hover {
+            transform: translateY(-5px);
+            background: #0077ff;
+            color: white;
+        }
+        /* PROJECTS */
+        
+        .projects {
+            background: white;
+        }
+        
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2px;
+            margin-top: 10px;
+        }
+        
+        .project-card {
+            background: rgb(68, 63, 63);
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.4s;
+            color: #eef5ff
+        }
+        
+        .project-card:hover {
+            transform: translateY(-83px);
+        }
+        
+        .project-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 40%;
+            object-fit: cover;
+            margin-bottom: 12px;
+        }
+        
+        input,
+        textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 14px 10px;
+            margin: 10px auto;
+            border: 1px solid #acf501;
+            border-radius: 10px;
+            display: block;
+            font-size: 16px;
+        }
+        
+        textarea {
+            min-height: 14px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: px;
+        }
+        /* WEATHER */
+        
+        #currentWeather {
+            margin-top: 20px;
+        }
+        
+        .forecast {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .forecast-card {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            width: 120px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* PROFILE */
+        
+        #profileme {
+            background: #eef5ff;
+        }
+        /* FOOTER */
+        
+        footer {
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        /* MOBILE RESPONSIVE */
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 20px;
+            }
+            header h1 {
+                font-size: 28px;
+            }
+            header p {
+                font-size: 16px;
+            }
+            section h2 {
+                font-size: 24px;
+            }
+            nav {
+                flex-direction: column;
+            }
+            .project-container {
+                grid-template-columns: 1fr;
+            }
+            .forecast {
+                flex-direction: column;
+                align-items: center;
+            }
+            .forecast-card {
+                width: 90%;
+            }
+            button {
+                width: 100%;
+            }
+        }
+        /* TYPING EFFECT */
+        
+        .typing1 {
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid black;
+            width: 0;
+            animation: typing 3s steps(18) infinite alternate, blink 0.7s infinite;
+        }
+        
+        .typing2 {
+            font-size: 18px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid black;
+            width: 0;
+            animation: typing2 4s steps(40) infinite alternate, blink 0.7s infinite;
+        }
+        
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 18ch;
+            }
+        }
+        
+        @keyframes typing2 {
+            from {
+                width: 0;
+            }
+            to {
+                width: 40ch;
+            }
+        }
+        
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+        /* MOBILE FIX */
+        
+        @media (max-width: 600px) {
+            nav {
+                display: flex;
+                flex-direction: 20px;
+                padding: 10px 10px;
+            }
+            nav a {
+                margin: 8px 0;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            button {
+                width: 50% 50%;
+            }
+        }
+        /* MOBILE */
+        
+        @media(max-width:768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                width: 100%;
+            }
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                font-size: 22px;
+            }
+        }
+        /*clock*/
+        
+        .clock-container {
+            text-align: right;
+            padding: 3px 5px;
+            border: 3px solid #fff;
+            border-radius: 15px;
+            background: #111;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .clock {
+            font-size: px;
+            color: #00cdf6;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(2, 182, 253, 0.59);
+        }
+        
+        .date {
+            margin-top: 1px;
+            font-size: 10px;
+            color: #00c3ff;
+            letter-spacing: 3px;
+        }
+        
+        @media(max-width:768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                width: 100%;
+            }
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                font-size: 22px;
+            }
+        }
+    </style>
+
+    <body>
+
+        <body>
+
+
+
+            <header>
+                <h1>My Portfolio</h1>
+                <p>Web Developer | Student | Designer</p>
+
+                <div class="clock-container">
+                    <div class="clock" id="clock">00:00:00</div>
+                    <div class="date" id="date">Loading...</div>
+                </div>
+
+            </header>
+
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#weather">Weather</a>
+                <a href="#projects">Projects</a>
+                <a href="#profileme">Profile</a>
+                <a href="#contact">Contact</a>
+                <a href="index3.html">Next page</a>
+                <a href="index.html">log out</a>
+                <a href="clientprob.html">Clientproblem</a>
+
+
+
+            </nav>
+
+            <section id="about" class="about">
+                <h2>About Me</h2>
+                <p class="typing2">Hello! My name is Christian A. Bautista.</p>
+            </section>
+
+            <section id="skills" class="skills">
+                <h2>My Skills</h2>
+                <div class="project-card">HTML</div>
+                <div class="project-card">CSS</div>
+                <div class="project-card">JavaScript</div>
+
+                <button><a href="transportfile.html">check list</a></button>
+
+                <back>
+                    <button><a href="index2.html">back</a></button>
+                </back>
+            </section>
+
+
+
+
+            <!-- ✅ WEATHER SECTION -->
+            <section id="weather">
+                <h2>Weather Dashboard</h2>
+
+                <input type="text" id="cityInput" placeholder="Enter city (Manila, Bautista)">
+                <button id="searchBtn">Search</button>
+                <button id="clearBtn">Clear</button>
+                <button><a href="index2.html">back</a></button>
+                <div id="loading" class="hidden">Loading...</div>
+                <div id="errorMessage"></div>
+
+                <div id="currentWeather"></div>
+                <div id="forecast"></div>
+                <div class="weather">
+
+
+
+
+                    <pre id="apiLog"></pre>
+            </section>
+
+            <section id="projects" class="projects">
+                <h2>Projects</h2>
+                <div class="project-card">Website Project</div>
+                <div class="project-card">Portfolio</div>
+            </section>
+
+            <section id="profileme">
+                <h2>Profile</h2>
+                <div class="project-card">
+                    <img src="CHRISTIAN.jpg">
+                    <p class="typing1">Christian A. Bautista</p>
+
+                </div>
+
+                <div class="project-card">
+                    <img src="graduation.jpg">
+                    <p class="typing1">Graduation picture</p>
+                </div>
+                <button1 style="float: right;">
+                    <a href="test.html" style="color: white; text-decoration: none;">
+    Back
+  </a>
+                </button1>
+
+
+
+            </section>
+
+            <section id="contact" class="contact">
+                <h2>Contact</h2>
+                <input type="text" placeholder="Your Name"><br>
+                <input type="email" placeholder="Your Email"><br>
+                <textarea placeholder="Message"></textarea><br>
+                <button>Send</button>
+            </section>
+            <div>
+
+                <footer style="position: fixed; bottom: 2px; left: 50%; transform: translateX(-50%);">
+                    <button style="padding: 10px 20px; border: none; border-radius: 8px; background: #5f6572;">
+        <a href="test3.html" style="color: #02ebf7; text-decoration: none; font-size: 13px;">
+            Back
+        </a>
+    </button>
+                </footer>
+
+                <!-- ✅ FIXED JAVASCRIPT -->
+                <script>
+                    /*clock*/
+                    function updateClock() {
+                        const now = new Date();
+
+                        const time = now.toLocaleTimeString();
+                        const date = now.toDateString();
+
+                        document.getElementById("clock").textContent = time;
+                        document.getElementById("date").textContent = date;
+                    }
+
+                    setInterval(updateClock, 1000);
+                    updateClock();
+                    /* Form*/
+                    const scriptURL = "https://script.google.com/macros/s/AKfycbw7hAd3n6aK6tu2fUzbkZ7cC07ztZCbwN4FhGW0eZoZJOFA2NQTk33_FCEPbodHbKtXrw/exec";
+
+                    const form = document.getElementById("myForm");
+                    const tableBody = document.querySelector("#reportTable tbody");
+
+                    let totalClients = 0;
+                    let totalProblems = 0;
+                    let todayReports = 0;
+
+                    form.addEventListener("submit", async(e) => {
+                        e.preventDefault();
+
+                        const formData = new FormData(form);
+
+                        try {
+                            const response = await fetch(scriptURL, {
+                                method: "POST",
+                                body: formData
+                            });
+
+                            const result = await response.text();
+
+                            document.getElementById("status").innerHTML = result;
+
+                            if (result.includes("SUCCESS")) {
+
+                                const name = formData.get("name");
+                                const number = formData.get("number");
+                                const address = formData.get("address");
+                                const problem = formData.get("problem");
+
+                                const row = `
+                <tr>
+                    <td>${name}</td>
+                    <td>${number}</td>
+                    <td>${address}</td>
+                    <td>${problem}</td>
+                </tr>
+            `;
+
+                                tableBody.innerHTML += row;
+
+                                totalClients++;
+                                totalProblems++;
+                                todayReports++;
+
+                                document.getElementById("totalClients").innerText = totalClients;
+                                document.getElementById("totalProblems").innerText = totalProblems;
+                                document.getElementById("todayReports").innerText = todayReports;
+
+                                form.reset();
+                            }
+
+                        } catch (error) {
+                            document.getElementById("status").innerHTML = "Error sending data";
+                        }
+                    });
+                    // MOCK DATA (merged into ONE object)
+                    const mockWeatherData = {
+                        Manila: {
+                            city: "Manila",
+                            country: "PH",
+                            temperature: 32,
+                            feelsLike: 35,
+                            humidity: 78,
+                            condition: "Cloudy",
+                            windSpeed: 10,
+                            forecast: [{
+                                day: "Mon",
+                                temp: 32,
+                                condition: "Sunny"
+                            }, {
+                                day: "Tue",
+                                temp: 31,
+                                condition: "Rainy"
+                            }, {
+                                day: "Wed",
+                                temp: 30,
+                                condition: "Cloudy"
+                            }]
+                        },
+                        Bautista: {
+                            city: "Bautista",
+                            country: "PH",
+                            temperature: 31,
+                            feelsLike: 35,
+                            humidity: 78,
+                            condition: "Rainy",
+                            windSpeed: 10,
+                            forecast: [{
+                                day: "Mon",
+                                temp: 32,
+                                condition: "Sunny"
+                            }, {
+                                day: "Tue",
+                                temp: 31,
+                                condition: "Rainy"
+                            }, {
+                                day: "Wed",
+                                temp: 30,
+                                condition: "Cloudy"
+                            }]
+                        }
+                    };
+
+                    // ELEMENTS
+                    const cityInput = document.getElementById("cityInput");
+                    const currentWeatherDiv = document.getElementById("currentWeather");
+                    const forecastDiv = document.getElementById("forecast");
+                    const errorDiv = document.getElementById("errorMessage");
+                    const loadingDiv = document.getElementById("loading");
+                    const apiLog = document.getElementById("apiLog");
+
+                    // HELPERS
+                    function showLoading(show) {
+                        loadingDiv.classList.toggle("hidden", !show);
+                    }
+
+                    function showError(msg) {
+                        errorDiv.textContent = msg;
+                        errorDiv.classList.remove("hidden");
+                    }
+
+                    function clearError() {
+                        errorDiv.textContent = "";
+                        errorDiv.classList.add("hidden");
+                    }
+
+                    function log(msg) {
+                        apiLog.textContent = msg + "\n" + apiLog.textContent;
+                    }
+
+                    // FETCH DATA
+                    async function fetchWeather(city) {
+                        log("Fetching weather for " + city);
+
+                        return new Promise((resolve, reject) => {
+                            setTimeout(() => {
+                                if (mockWeatherData[city]) {
+                                    resolve(mockWeatherData[city]);
+                                } else {
+                                    reject("City not found");
+                                }
+                            }, 1000);
+                        });
+                    }
+
+                    // DISPLAY CURRENT
+                    function displayWeather(data) {
+                        currentWeatherDiv.innerHTML = `
+    <h3>${data.city}, ${data.country}</h3>
+    <h1>${data.temperature}°C</h1>
+    <p>${data.condition}</p>
+    <p>Humidity: ${data.humidity}%</p>
+  `;
+                    }
+
+                    // DISPLAY FORECAST
+                    function displayForecast(data) {
+                        let html = "";
+                        data.forecast.forEach(day => {
+                            html += `
+      <div class="forecast-card">
+        <p>${day.day}</p>
+        <p>${day.temp}°C</p>
+        <p>${day.condition}</p>
+      </div>
+    `;
+                        });
+                        forecastDiv.innerHTML = html;
+                    }
+
+                    // SEARCH
+                    async function searchWeather() {
+                        let city = cityInput.value.trim();
+
+                        if (!city) {
+                            showError("Enter city");
+                            return;
+                        }
+
+                        clearError();
+
+                        // Normalize input (Manila, bautista → Manila, Bautista)
+                        city = city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
+
+                        showLoading(true);
+
+                        try {
+                            const data = await fetchWeather(city);
+                            displayWeather(data);
+                            displayForecast(data);
+                        } catch (err) {
+                            showError(err);
+                        }
+
+                        showLoading(false);
+                    }
+
+                    // EVENTS
+                    document.getElementById("searchBtn").onclick = searchWeather;
+
+                    document.getElementById("clearBtn").onclick = () => {
+                        currentWeatherDiv.innerHTML = "<p>Enter a city to begin</p>";
+                        forecastDiv.innerHTML = "";
+                        clearError();
+                    };
+                    //weather pic
+                    function displayWeather(data) {
+                        let icon = "";
+
+                        if (data.condition === "Cloudy") {
+                            icon = "https://cdn-icons-png.flaticon.com/512/414/414825.png";
+                        } else if (data.condition === "Sunny") {
+                            icon = "https://cdn-icons-png.flaticon.com/512/869/869869.png";
+                        } else if (data.condition === "Rainy") {
+                            icon = "https://cdn-icons-png.flaticon.com/512/414/414974.png";
+                        }
+
+                        currentWeatherDiv.innerHTML = `
+        <h3>${data.city}, ${data.country}</h3>
+        <img src="${icon}" width="50">
+        <h1>${data.temperature}°C</h1>
+        <p>${data.condition}</p>
+
+        <p>Humidity: ${data.humidity}%</p>
+    `;
+                    }
+                    const WEB_APP_URL = "YOUR_WEB_APP_URL_HERE";
+
+
+
+
+
+
+
+                    function addClient() {
+                        let name = document.getElementById("name").value;
+                        let link = document.getElementById("address").value;
+                        let number = document.getElementById("number").value;
+
+                        // FIXED CONDITION
+                        if (name === "" || link === "" || number === "") {
+                            alert("Please fill all fields");
+                            return;
+                        }
+
+                        let ul = document.getElementById("clientList");
+                        let li = document.createElement("li");
+
+                        li.innerHTML = `
+        <strong>Name:</strong> ${name} <br>
+        <strong>Address:</strong> ${link} <br>
+        <strong>Number:</strong> ${number} <br>
+        <a href="${link}" target="_blank">Visit</a>
+        <button class="delete-btn" onclick="deleteClient(this)">X</button>
+    `;
+
+                        ul.appendChild(li);
+
+                        // SAVE TO LOCAL STORAGE
+                        let clients = JSON.parse(localStorage.getItem("clients")) || [];
+                        clients.push({
+                            name: name,
+                            link: link,
+                            number: number
+                        });
+                        localStorage.setItem("clients", JSON.stringify(clients));
+
+                        // CLEAR INPUTS
+                        document.getElementById("name").value = "";
+                        document.getElementById("address").value = "";
+                        document.getElementById("number").value = "";
+                    }
+
+                    function deleteClient(button) {
+                        let li = button.parentElement;
+                        let name = li.querySelector("strong").nextSibling.textContent.trim();
+
+                        if (confirm("Delete this client?")) {
+                            li.remove();
+
+                            let clients = JSON.parse(localStorage.getItem("clients")) || [];
+                            clients = clients.filter(c => c.name !== name);
+                            localStorage.setItem("clients", JSON.stringify(clients));
+                        }
+                    }
+
+                    // LOAD saved data
+                    window.onload = function() {
+                        let ul = document.getElementById("clientList");
+                        let clients = JSON.parse(localStorage.getItem("clients")) || [];
+
+                        clients.forEach(client => {
+                            let li = document.createElement("li");
+
+                            li.innerHTML = `
+            <strong>Name:</strong> ${client.name} <br>
+            <strong>Address:</strong> ${client.link} <br>
+            <strong>Number:</strong> ${client.number} <br>
+            <a href="${client.link}" target="_blank">Visit</a>
+            <button class="delete-btn" onclick="deleteClient(this)">X</button>
+        `;
+
+                            ul.appendChild(li);
+                        });
+                    };
+                </script>
+
+
+
+        </body>
+
+</html>

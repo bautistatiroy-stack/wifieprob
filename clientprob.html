@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>WiFiVilleIT Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #0077ff, #00c6ff);
+            padding: 10px 11PX;
+        }
+        
+        h2 {
+            text-align: center;
+        }
+        /* Make table scrollable on phone */
+        
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: linear-gradient(135deg, #e9ebee, #f4f6f6);
+            min-width: 600px;
+            border-radius: 10px;
+            /* important for mobile scroll */
+        }
+        
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+        
+        th {
+            background: #007bff;
+            color: white;
+            padding: 10px 10PX;
+            white-space: nowrap;
+        }
+        
+        td {
+            padding: 10px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        /* Mobile optimization */
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 5px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            th,
+            td {
+                font-size: 5px;
+                padding: 8px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <footer style="position: fixed; bottom: 2px; left: 50%; transform: translateX(-50%);">
+        <button style="padding: 1px 2px; border: none; border-radius: 8px; background: #5f6572;">
+        <a href="test3.html" style="color: #02ebf7; text-decoration: none; font-size: 13px;">
+            Back->
+        </a>
+    </button>
+    </footer>
+    <h2>Client Reports</h2>
+
+    <table id="table" border="1" cellpadding="10">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Problem</th>
+            </tr>
+        </thead>
+
+        <tbody></tbody>
+
+    </table>
+
+
+
+    <script>
+        const apiURL =
+            "https://script.google.com/macros/s/AKfycbw7hAd3n6aK6tu2fUzbkZ7cC07ztZCbwN4FhGW0eZoZJOFA2NQTk33_FCEPbodHbKtXrw/exec";
+
+
+        function loadData() {
+            fetch(apiURL)
+                .then(response => response.json())
+                .then(data => {
+                    let tableBody = document.querySelector("#table tbody");
+                    tableBody.innerHTML = "";
+
+                    // FORCE PH TIMEZONE
+                    var timezone = "Asia/Manila";
+
+                    data.forEach(row => {
+                        let tr = document.createElement("tr");
+
+                        // FORMAT DATE
+                        let dateObj = new Date(row.date);
+                        let formattedDate = dateObj.toLocaleDateString("en-PH", {
+                            timeZone: timezone,
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric"
+                        });
+
+                        // FORMAT TIME (PHILIPPINES TIME ZONE)
+                        let timeObj = new Date(row.time);
+                        let formattedTime = timeObj.toLocaleTimeString("en-PH", {
+                            timeZone: timezone,
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit",
+                            hour12: true
+                        });
+
+                        tr.innerHTML = `
+                    <td>${row.name}</td>
+                    <td>${row.number}</td>
+                    <td>${row.address}</td>
+                    <td>${formattedDate}</td>
+                    <td>${formattedTime}</td>
+                    <td>${row.problem}</td>
+                 `;
+
+                        tableBody.appendChild(tr);
+                    });
+                })
+                .catch(error => {
+                    console.log("ERROR:", error);
+                });
+        }
+
+        // LOAD FIRST TIME
+        loadData();
+
+        // AUTO REFRESH EVERY 3 SECONDS
+        setInterval(loadData, 1000);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial;
+        }
+        
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #02ff23, #153e8a, #026a8a);
+        }
+        /* LOGIN CARD */
+        
+        .login-box {
+            width: 360px;
+            padding: 35px;
+            border-radius: 18px;
+            background-color: rgb(0, 195, 255);
+            background: rgba(13, 32, 240, 0.235);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 35px rgba(158, 132, 28, 0.4);
+            color: white;
+            text-align: center;
+        }
+        /* TITLE */
+        
+        .login-box h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .login-box p {
+            font-size: 13x;
+            opacity: 0.8;
+            margin: bottom 33px;
+        }
+        /* INPUT BOX */
+        
+        .input-box {
+            margin: 10px 0;
+        }
+        
+        .input-box input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            background: rgba(120, 100, 100, 0.431);
+            color: rgb(230, 235, 237);
+        }
+        
+        .input-box input::placeholder {
+            color: #ddd;
+        }
+        /* BUTTON */
+        
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .login-btn:hover {
+            transform: scale(1.05);
+        }
+        /* GOOGLE BUTTON */
+        
+        .google-btn {
+            margin-top: 12px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgb(0, 234, 251);
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .google-btn:hover {
+            background: rgba(255, 255, 255, 0.976);
+        }
+        /* LINKS */
+        
+        .links {
+            margin-top: 15px;
+            font-size: 13px;
+        }
+        
+        .links a {
+            color: #00c6ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form class="login-box" onsubmit="login(event)">
+        <h2>Login</h2>
+
+        <div class="input-box">
+            <input type="email" id="email" placeholder="Enter Email" required>
+        </div>
+
+        <div class="input-box">
+            <input type="password" id="pass" placeholder="Enter Password" required>
+            <span class="toggle-btn" onclick="togglePass()">👁️</span>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function togglePass() {
+            let p = document.getElementById("pass");
+            p.type = (p.type === "password") ? "text" : "password";
+        }
+
+        function login(event) {
+            event.preventDefault();
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("pass").value;
+
+            if (email === "christian@gmail.com" && password === "1234") {
+                window.location.href = "test3.html";
+            } else {
+                alert("Wrong email or password!");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
